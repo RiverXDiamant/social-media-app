@@ -18,10 +18,38 @@ let formValidation = () => {
   // prevents users from submitting blank input fields
 
   if (input.value === "") {
+    // message will show if the user tries to submit a blank form
     msg.innerHTML = "Post cannot be blank";
     console.log("failure");
   } else {
     console.log("success");
     msg.innerHTML = "";
+    acceptData();
   }
+};
+
+// ===== Accept Data From Input Fields === \\
+
+// Store the data in an object using a function that collects data from the user input and store them.
+let data = {};
+
+let acceptData = () => {
+  data["text"] = input.value;
+  console.log(data);
+
+  createPost();
+};
+
+// ===== Create Posts ===== \\
+
+let createPost = () => {
+  posts.innerHTML += `
+  <div>
+  <p>${data.text}</p>
+  <span>
+  <i onClick="editPost(this)" class="fas fa-edit"></i>
+  <i onClick="deletePost(this)" class="fas fa-trash-alt"></i>
+  </span>
+  </div>`;
+  input.value = "";
 };
