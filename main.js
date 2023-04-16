@@ -53,3 +53,8 @@ let createPost = () => {
   </div>`;
   input.value = "";
 };
+
+// ===== Delete Posts ===== \\
+let deletePost = (e) => {
+  e.parentElement.parentElement.remove();
+};
